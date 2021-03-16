@@ -22,7 +22,8 @@ python main.py
 The output flag saves your object tracker results as an avi file for you to watch back. It is not necessary to have the flag if you don't want to save the resulting video.
 
 ## References
-https://github.com/zzh8829/yolov3-tf2
+https://github.com/zzh8829/yolov3-tf2  
+
 https://github.com/nwojke/deep_sort
 
 ## Citation
