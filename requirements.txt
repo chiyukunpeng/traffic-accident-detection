@@ -1,0 +1,12 @@
+tensorflow-gpu==2.1.2
+numpy
+opencv-python==4.1.1.26
+lxml
+tqdm
+seaborn
+pillow
+pyqt5
+cudnn
+cudatoolkit==10.1.243
+matplotlib
+python==3.7
