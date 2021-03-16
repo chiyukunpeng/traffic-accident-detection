@@ -3,70 +3,36 @@
 ##  Introduction
 
 This project aims to infer traffic accident based on computer vision. Our method uses combined models based on `yolov3` and `deepsort`. Expriments show that our method outperforms state-of-the-art. More information please see [CSDN](https://blog.csdn.net/chiyukunpeng/article/details/103236840?spm=1001.2014.3001.5502)
+![img](img/ui.png)
 
 ## Quick Start
 
 #### 1 Requirements
-Python 3.8 or later with all requirements.txt dependencies installed, including torch>=1.6. To install run:
+Python 3.7 or later with all requirements.txt dependencies installed. To install run:
 ```
 $ pip install -r requirements.txt
 ```
-#### 2 Combine dataset
-Please download dataset via mchar_data_list_0515.csv. To merge dataset run:
-```
-$ python image_merge.py --train_image_path   --val_image_path  --dst_image_path
-```
-#### 3 Create data.yaml
-```
-train: ../coco/images/train/ # 40k images
-val: ../coco/images/val/  # 10k images
+#### 2 Download our pretrained weights
+You can download the `yolov3` weights by clicking [code:9llk](https://pan.baidu.com/s/1j4SuW7pvJGGt00YzEuhqzg) and `deepsort` weights [code:b1ig](https://pan.baidu.com/s/1OcE3hLukoBZrDbsRIdFgpQ) then save them to the `data` folder.
 
-# number of classes
-nc: 10
-
-# class names
-names: ['0','1','2','3','4','5','6','7','8','9']
+#### 3 Run main.py
 ```
-#### 4 Create labels
-To convert train.json to train.txt,please run:
+python main.py
 ```
-$ python make_label.py --train_image_path  --val_image_path  --train_annotation_path --val_annotation_path --label_path
-```
-#### 5 Organize directory
-```
----coco
-    |---images
-    |      |---train
-    |      |---val
-    |      |---test
-    |---labels
-           |---train
-           |---val
----data
----models
----utils
----weights
-```
-#### 6 Train
-Use the largest --batch-size your GPU allows (batch sizes shown for 16 GB devices). Pretrained weights are auto-downloaded from [Google Drive](https://drive.google.com/open?id=1Drs_Aiu7xx6S-ix95f9kNsA6ueKRpN2J).
-```
-$ python train.py --data ./data/coco.yaml --cfg ./models/yolov5s.yaml --weights ./weights/yolov5s.pt --batch_size 64  --epochs 20
-```
-Training losses and performance metrics are saved to Tensorboard and also to a **runs/exp0/results.txt** logfile. **results.txt** is plotted as **results.png** after training completes. Partially completed **results.txt** files can be plotted with **from utils.utils import plot_results; plot_results()**.
-#### 7 Model merge(Optional)
-Please run **result_merge.py**.
+The output flag saves your object tracker results as an avi file for you to watch back. It is not necessary to have the flag if you don't want to save the resulting video.
 
 ## References
-https://github.com/ultralytics/yolov5
+https://github.com/zzh8829/yolov3-tf2
+https://github.com/nwojke/deep_sort
 
 ## Citation
 If you find this project useful for your research, please cite:
 ```
-@{street-view character recognition project,
+@{traffic accident detection project,
 author = {chen peng},
-title = {SVCR},
-website = {https://github.com/chiyukunpeng/street-view-character-recognition},
-month = {August},
-year = {2020}
+title = {TAD},
+website = {https://github.com/chiyukunpeng/traffic-accident-detection},
+month = {March},
+year = {2021}
 }
 ```
